@@ -1,0 +1,17 @@
+%h1
+  = gravatar_for @user
+  = "#{@user.name}'s Information"
+
+%br
+%ul
+  %li
+    = "Name: #{@user.name}"
+  %li
+    = "Email: #{@user.email}"
+  %li
+    = "Password: #{@user.password}"
+  %li
+    = "Profile created at #{@user.created_at}."
+
+= button_to "Edit Profile", edit_user_path(@user), :method => :get
+= link_to "Back to user list", users_path

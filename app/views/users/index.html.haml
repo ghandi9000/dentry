@@ -1,0 +1,18 @@
+%h1 All Users
+
+%table#users
+  %thead
+    %tr
+      %th{:class => params[:sort] == 'name' ? 'hilite' : ''}
+        = link_to 'Name', {controller: 'users', action: 'index',
+        sort_users: 'name'}
+      %th Password
+      %th Email
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= link_to user.name, user_path(user)
+          %td= user.password
+          %td= user.email
+%br
+= link_to 'Back to overview', overview_index_path

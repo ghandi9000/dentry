@@ -1,0 +1,25 @@
+%h2 Create a new tree
+= form_tag trees_path, :method => :post do
+
+  = label :tree, :plot, 'Plot'
+  = text_field :tree, :plot
+
+  = label :tree, :tree_id, 'Tree ID'
+  = text_field :tree, :tree_id
+
+  = label :tree, :species, 'Species'
+  = select :tree, :species, ['ABBA', 'PIRU', 'BECO']
+
+  = label :tree, :dbh, 'DBH'
+  = text_field :tree, :dbh
+
+  = label :tree, :ht, 'Height'
+  = text_field :tree, :ht
+
+  = label :tree, :notes, 'Notes'
+  = text_field :tree, :notes
+  
+  = submit_tag 'Save Changes'
+
+= link_to 'Reset Form', new_tree_path
+

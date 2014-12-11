@@ -1,0 +1,13 @@
+%h1 Welcome to Moosilauke Data Entry!
+
+= form_for :users, url: signin_path, :method => :get do
+  = label :user, :name, 'Name'
+  = text_field :user, :name
+
+  = label :user, :password, 'Password'
+  = password_field :user, :password
+
+  = submit_tag 'Sign In'
+
+%br
+= link_to 'Sign Up', signup_path

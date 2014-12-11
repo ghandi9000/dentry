@@ -1,0 +1,25 @@
+%h2 Edit Tree
+= form_tag tree_path, :method => :put do
+
+  = label :tree, :plot, 'Plot'
+  = text_field :tree, :plot
+
+  = label :tree, :tree_id, 'Tree ID'
+  = text_field :tree, :tree_id
+
+  = label :tree, :species, 'Species'
+  = select :tree, :species, ['ABBA', 'PIRU', 'BECO']
+
+  = label :tree, :dbh, 'DBH'
+  = text_field :tree, :dbh
+
+  = label :tree, :ht, 'Height'
+  = text_field :tree, :ht
+
+  = label :tree, :notes, 'Notes'
+  = text_field :tree, :notes
+  
+  = submit_tag 'Save Changes'
+
+%br/
+= button_to 'Cancel', trees_path, :method => :get

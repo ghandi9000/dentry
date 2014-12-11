@@ -1,0 +1,55 @@
+%h1 All Trees
+= form_tag trees_path, :id => 'spp_form', :method => :get do
+  Species:
+  - @all_species.each do |spec|
+    = spec
+    = check_box_tag "species[#{spec}]", 1, @selected_species.include?(spec)
+  %br
+  Plots:
+  - @all_plots.each do |p|
+    = p
+    = check_box_tag "plots[#{p}]", 1, @selected_plots.include?(p)
+  = submit_tag 'Refresh', {:id => 'spp_plt_submit'}
+  = submit_tag 'Reset'
+
+%table#trees
+  %thead
+    %tr
+      %th{:class => params[:sort_by] == 'plot' ? 'hilite' : ""}
+        = link_to "Plot", {controller: 'trees', action:'index',
+        sort_by: 'plot', species: @selected_species, plots: @selected_plots},
+        :id => 'plot_header'
+      %th{:class => params[:sort_by] == 'tree_id' ? 'hilite' : ""}
+        = link_to "Tree ID", {:controller => 'trees', :action => 'index',
+        :sort_by => 'tree_id', species: @selected_species,
+          plots: @selected_plots}, :id => 'tree_id_header'
+      %th{:class => params[:sort_by] == 'species' ? 'hilite' : ""}
+        = link_to "Species", {:controller => 'trees', :action => 'index',
+        :sort_by => 'species', species: @selected_species,
+          plots: @selected_plots}, :id => 'species_header'
+      %th{:class => params[:sort_by] == 'dbh' ? 'hilite' : ""}
+        = link_to "DBH", {:controller => 'trees', :action => 'index',
+        :sort_by => 'dbh', species: @selected_species,
+          plots: @selected_plots}, :id => 'dbh_header'
+      %th{:class => params[:sort_by] == 'ht' ? 'hilite' : ""}
+        = link_to "Height", {:controller => 'trees', :action => 'index',
+        :sort_by => 'ht', species: @selected_species,
+          plots: @selected_plots}, :id => 'ht_header'
+      %th Notes
+      %th Edit
+      %th Delete
+      %th More Info
+    %tbody
+      - @trees.each do |tree|
+        %tr
+          %td= tree.plot
+          %td= tree.tree_id
+          %td= tree.species
+          %td= number_with_precision(tree.dbh, :precision => 2)
+          %td= number_with_precision(tree.ht, :precision => 2)
+          %td= tree.notes
+          %td= button_to 'Edit', edit_tree_path(tree), :method => :get
+          %td= button_to 'Delete', tree_path(tree), :method => :delete, :confirm => 'Are you sure?'
+          %td= link_to "More info about tree #{tree.tree_id}", tree_path(tree)
+
+= link_to 'Add new tree', new_tree_path
