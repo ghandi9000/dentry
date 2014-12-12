@@ -35,9 +35,12 @@ end
 
 # Create some users
 users = [
-  {:name => "Noah", :password => "secret", :email => "noah.v.peart@gmail.com"},
-  {:name => "Josyn", :password => "secret", :email => nil},
-  {:name => "Bob", :password => "secret", :email => "bob@bob.com"}
+  {name: "Noah", email: "noah.v.peart@gmail.com", password: "secret",
+  password_confirmation: "secret"},
+  {name: "Joesy", email: "812k_dlka@gmail.com", password: "secret",
+  password_confirmation: "secret"},
+  {name: "Jen", email: "kasfj_201@gmail.com", password: "secret",
+  password_confirmation: "secret"},
 ]
 
 users.each do |user|

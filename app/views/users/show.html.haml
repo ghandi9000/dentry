@@ -9,9 +9,11 @@
   %li
     = "Email: #{@user.email}"
   %li
-    = "Password: #{@user.password}"
+    = "Password_digest: #{@user.password_digest}"
   %li
     = "Profile created at #{@user.created_at}."
+  %li
+    = "Profile updated at #{@user.updated_at}."
 
 = button_to "Edit Profile", edit_user_path(@user), :method => :get
 = link_to "Back to user list", users_path

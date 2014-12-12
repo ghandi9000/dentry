@@ -5,6 +5,7 @@ describe User do
     @valid_attributes = {
       :name => 'Bob',
       :password => 'secret',
+      :password_confirmation => 'secret',
       :email => "bob@gmail.com"
     }
     @valid_addresses = %w[user@example.com USER@foo.com A_US-ER@goo.bar.org
@@ -26,7 +27,7 @@ describe User do
     new_user.should_not be_valid
   end
   
-  it 'should allow users with the same name but different passwords' do
+  it 'should allow users with the same name but different emails' do
     new_user = User.new(:name => 'Bob', :email => 'bob420@gmail.com',
       :password => 'secret')
   end
@@ -42,11 +43,15 @@ describe User do
   end
 
   it 'should enforce passwords to be at least 6 characters' do
-    new_user = User.new(:name => 'Sally', :email => 'sallio@gmail.com',
-      :password => 'abcde')
-    new_user.should_not be_valid
+    @existing_user.password = @existing_user.password_confirmation = 'a'*5
+    @existing_user.should_not be_valid
   end
 
+  it 'should allow passwords that are at least 6 characters' do
+    @existing_user.password = @existing_user.password_confirmation = 'a'*6
+    @existing_user.should be_valid
+  end
+  
   it 'should allow valid email addresses' do
     @valid_addresses.each do |valid_address|
       @existing_user.email = valid_address
