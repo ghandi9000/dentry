@@ -1,19 +1,15 @@
-%h2 Details about tree #{@tree.tree_id}
-
-%ul#details
-  %li
-    Species:
-    = @tree.species
-  %li
-    DBH:
-    = number_with_precision(@tree.dbh, :precision => 2)
-  %li
-    Height:
-    = number_with_precision(@tree.ht, :precision => 2)
-
-%h3 Notes:
-%p#notes= @tree.notes
-
-= link_to 'Edit info', edit_tree_path(@tree)
-= button_to 'Delete', tree_path(@tree), :method => :delete, :confirm => 'Are you sure?'
+%h2 Details about tree #{@tree.tag} from plot #{@tree.plot}
+= render 'trees/details'
+    
+= link_to 'Edit', edit_tree_path(@tree)
+|
+= link_to 'Delete', tree_path(@tree), :method => :delete, data: {:confirm => 'Are you sure?'}
+|
 = link_to 'Back to tree list', trees_path
+
+%h4 Comments:
+= render @tree.comments
+
+%h4 Add a comment:
+= render "comments/form"
+%br

@@ -4,8 +4,8 @@
   = label :tree, :plot, 'Plot'
   = text_field :tree, :plot
 
-  = label :tree, :tree_id, 'Tree ID'
-  = text_field :tree, :tree_id
+  = label :tree, :tag, 'Tag'
+  = text_field :tree, :tag
 
   = label :tree, :species, 'Species'
   = select :tree, :species, ['ABBA', 'PIRU', 'BECO']
@@ -15,11 +15,8 @@
 
   = label :tree, :ht, 'Height'
   = text_field :tree, :ht
-
-  = label :tree, :notes, 'Notes'
-  = text_field :tree, :notes
   
   = submit_tag 'Save Changes'
 
 %br/
-= button_to 'Cancel', trees_path, :method => :get
+= button_to 'Cancel', tree_path(@tree), :method => :get

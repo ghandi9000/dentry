@@ -13,6 +13,9 @@ Moose::Application.routes.draw do
 
   get 'welcome/signin'
 
-  resources :trees, :users
+  resources :trees do
+    resources :comments
+  end
+  resources :users
   root :to => redirect('/welcome/index')
 end

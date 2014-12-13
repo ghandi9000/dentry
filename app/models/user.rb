@@ -3,14 +3,14 @@
 # Description: Models a user, email address must be unique for login
 # Author: Noah Peart
 # Created: Wed Dec 10 20:12:49 2014 (-0400)
-# Last-Updated: Thu Dec 11 14:41:25 2014 (-0400)
+# Last-Updated: Fri Dec 12 00:42:51 2014 (-0400)
 #           By: Noah Peart
 # 
 class User < ActiveRecord::Base
   # Users should have name, email, password
   before_save { self.email = email.downcase }
-  
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, uniqueness: {case_sensitive: false}, 
   length: {maximum: 50}, format: {with: VALID_EMAIL_REGEX}
   

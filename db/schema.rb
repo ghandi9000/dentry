@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211182422) do
+ActiveRecord::Schema.define(version: 20141213030505) do
+
+  create_table "comments", force: true do |t|
+    t.string   "commenter"
+    t.text     "body"
+    t.integer  "tree_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comments", ["tree_id"], name: "index_comments_on_tree_id"
 
   create_table "trees", force: true do |t|
     t.integer  "plot"
-    t.integer  "tree_id"
+    t.integer  "tag"
     t.string   "species"
-    t.text     "notes"
     t.decimal  "dbh"
     t.decimal  "ht"
     t.datetime "created_at"

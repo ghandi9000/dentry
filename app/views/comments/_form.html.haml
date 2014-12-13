@@ -1,0 +1,8 @@
+= form_tag tree_comments_path(@tree), method: :post do
+  = label :comment, :commenter, "Commenter"
+  = text_field :comment, :commenter
+
+  = label :comment, :body, 'Comment'
+  = text_field :comment, :body
+
+  = submit_tag 'Submit Comment'

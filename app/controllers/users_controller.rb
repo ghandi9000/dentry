@@ -7,6 +7,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:notice] = "User #{@user.email} was successfully destroyed."
+    redirect_to users_path
+  end
+  
   def new
   end
 

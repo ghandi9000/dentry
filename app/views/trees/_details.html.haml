@@ -1,0 +1,19 @@
+%ul#details
+  %li
+    Tag:
+    = @tree.tag
+  %li
+    Species:
+    = @tree.species
+  %li
+    DBH:
+    = number_with_precision(@tree.dbh, :precision => 2)
+  %li
+    Height:
+    = number_with_precision(@tree.ht, :precision => 2)
+  %li
+    Created:
+    = @tree.created_at
+  %li
+    Updated:
+    = @tree.updated_at

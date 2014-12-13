@@ -19,10 +19,10 @@
         = link_to "Plot", {controller: 'trees', action:'index',
         sort_by: 'plot', species: @selected_species, plots: @selected_plots},
         :id => 'plot_header'
-      %th{:class => params[:sort_by] == 'tree_id' ? 'hilite' : ""}
-        = link_to "Tree ID", {:controller => 'trees', :action => 'index',
-        :sort_by => 'tree_id', species: @selected_species,
-          plots: @selected_plots}, :id => 'tree_id_header'
+      %th{:class => params[:sort_by] == 'tag' ? 'hilite' : ""}
+        = link_to "Tag", {:controller => 'trees', :action => 'index',
+        :sort_by => 'tag', species: @selected_species,
+          plots: @selected_plots}, :id => 'tag_header'
       %th{:class => params[:sort_by] == 'species' ? 'hilite' : ""}
         = link_to "Species", {:controller => 'trees', :action => 'index',
         :sort_by => 'species', species: @selected_species,
@@ -35,21 +35,15 @@
         = link_to "Height", {:controller => 'trees', :action => 'index',
         :sort_by => 'ht', species: @selected_species,
           plots: @selected_plots}, :id => 'ht_header'
-      %th Notes
-      %th Edit
-      %th Delete
       %th More Info
     %tbody
       - @trees.each do |tree|
         %tr
           %td= tree.plot
-          %td= tree.tree_id
+          %td= tree.tag
           %td= tree.species
           %td= number_with_precision(tree.dbh, :precision => 2)
           %td= number_with_precision(tree.ht, :precision => 2)
-          %td= tree.notes
-          %td= button_to 'Edit', edit_tree_path(tree), :method => :get
-          %td= button_to 'Delete', tree_path(tree), :method => :delete, :confirm => 'Are you sure?'
-          %td= link_to "More info about tree #{tree.tree_id}", tree_path(tree)
+          %td= link_to "More info", tree_path(tree)
 
 = link_to 'Add new tree', new_tree_path

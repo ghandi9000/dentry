@@ -6,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 more_trees = [
-        {:plot => 1, :tree_id => 1000, :species => 'ABBA',
-        :notes => "Leaning sideways", :dbh => 10.5, :ht => 13.3},
-        {:plot => 1, :tree_id => 99, :species => 'PIRU',
-        :notes => "", :dbh => 5.4, :ht => 9},
-        {:plot => 1, :tree_id => 120, :species => 'PIRU',
-        :notes => "Missing tag", :dbh => 1.5, :ht => 3.6}
+        {:plot => 1, :tag => 1000, :species => 'ABBA',
+        :dbh => 10.5, :ht => 13.3},
+        {:plot => 1, :tag => 99, :species => 'PIRU',
+        :dbh => 5.4, :ht => 9},
+        {:plot => 1, :tag => 120, :species => 'PIRU',
+        :dbh => 1.5, :ht => 3.6}
             ]
 
 # Create some random data
@@ -22,9 +22,9 @@ dbh_max = 15
 ht_max = 20
 even_more_trees = []
 1.upto(20).each do
-  t = {:plot => rand(plot_max), :tree_id => rand(id_max),
+  t = {:plot => rand(plot_max), :tag => rand(id_max),
   :species => species[rand(species.size)], :dbh => rand(0.1..dbh_max),
-  :ht => rand(1.5..ht_max), :notes => 'blah blah blah ' + rand(100000).to_s}
+  :ht => rand(1.5..ht_max)}
   even_more_trees << t
 end
 

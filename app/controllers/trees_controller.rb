@@ -3,7 +3,7 @@
 # Description: 
 # Author: Noah Peart
 # Created: Sun Dec  7 17:02:23 2014 (-0400)
-# Last-Updated: Thu Dec 11 02:34:28 2014 (-0400)
+# Last-Updated: Fri Dec 12 23:30:44 2014 (-0400)
 #           By: Noah Peart
 # 
 class TreesController < ApplicationController
@@ -51,7 +51,7 @@ class TreesController < ApplicationController
   def create
     params.require(:tree).permit!
     @tree = Tree.create!(params[:tree])
-    flash[:notice] = "Tree #{@tree.tree_id} was successfully created."
+    flash[:notice] = "Tree #{@tree.tag} in plot #{@tree.plot} was successfully created."
     redirect_to trees_path
   end
   def edit
@@ -59,9 +59,9 @@ class TreesController < ApplicationController
   end
   def update
     params.require(:tree).permit!
-    @tree = Tree.find params[:id]
+    @tree = Tree.find(params[:id])
     @tree.update_attributes!(params[:tree])
-    flash[:notice] = "Tree #{@tree.tree_id} was successfully updated."
+    flash[:notice] = "Tree #{@tree.tag} was successfully updated."
     respond_to do |client_wants|
       client_wants.html { redirect_to tree_path(@tree) }
       client_wants.xml { render :xml => @tree.to_xml }
@@ -70,7 +70,7 @@ class TreesController < ApplicationController
   def destroy
     @tree = Tree.find(params[:id])
     @tree.destroy
-    flash[:notice] = "Tree #{@tree.tree_id} deleted."
+    flash[:notice] = "Tree #{@tree.tag} deleted."
     redirect_to trees_path
   end
 end
