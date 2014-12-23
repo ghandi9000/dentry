@@ -3,3 +3,5 @@
   %li
     %strong #{comment.commenter}:
     #{comment.body} (#{comment.created_at})
+    = link_to 'Delete Comment', tree_comment_path(@tree, :id => comment[:id]),
+    :method => :delete, data: { :confirm => 'Are you sure?' }

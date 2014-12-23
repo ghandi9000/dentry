@@ -1,0 +1,8 @@
+%h1 List all comments (for diagnostics)
+= p 
+%ul
+  - if @comments.size == 0
+    = "No comments whatsoever!"
+  - @comments.each do |comment|
+    %li
+      = comment.commenter + ': ' + comment.body + ' => tree ' + comment.tree_id.to_s

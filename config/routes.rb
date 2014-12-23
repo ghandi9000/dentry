@@ -4,7 +4,7 @@ Moose::Application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
-  
+  get 'comments' => 'comments#index'
   get 'overview/index'
 
   get 'welcome/signup'
