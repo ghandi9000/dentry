@@ -1,4 +1,4 @@
-%h1 Welcome to Moosilauke Data Entry!
+%H1 Log In
 
 %div{class: 'row'}
   %div{class: 'col-md-6 col-md-offset-3'}
@@ -11,11 +11,7 @@
       = f.password_field :password, class: 'form-control'
 
       = f.submit 'Log In', class: "btn btn-primary"
-
+  
 %p
-  New user?
-  = link_to 'Sign Up', new_user_path
-
-%script{:type => "text/javascript", :src => "/assets/map/gmap.js"}
-%div#map-container
-  %div#map-canvas
+  New User?
+  = link_to "Sign up", new_user_path

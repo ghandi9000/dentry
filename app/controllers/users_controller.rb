@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
   
   def new
+    @user = User.new
   end
 
   def edit
@@ -33,17 +34,10 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params)
-    if User.find_by_name(@user.name)
-      flash[:warning] = "Sorry, that username is taken."
-      render 'users/new'
-    elsif @user.password.size < 4
-      flash[:warning] = "Password must be at least 4 characters."
-      redirect_to welcome_index_path
-    elsif @user.save
-      flash[:notice] = "Welcome #{@user.name}!  You have successfully signed up."
-      redirect_to overview_index_path
+    if @user.save
+      flash[:notice] = "#{@user.name}'s account created successfully."
+      redirect_to user_path(@user)
     else
-      flash[:warning] = "Inputs were invalid."
       render 'users/new'
     end
   end
@@ -65,6 +59,7 @@ class UsersController < ApplicationController
   
   private
   def user_params
-    params.require(:user).permit(:name, :password, :email)
+    params.require(:user).permit(:name, :password, :email,
+      :password_confirmation)
   end
 end

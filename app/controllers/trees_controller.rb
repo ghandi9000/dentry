@@ -3,7 +3,7 @@
 # Description: 
 # Author: Noah Peart
 # Created: Sun Dec  7 17:02:23 2014 (-0400)
-# Last-Updated: Tue Dec 23 00:19:42 2014 (-0400)
+# Last-Updated: Tue Dec 23 14:22:52 2014 (-0400)
 #           By: Noah Peart
 # 
 class TreesController < ApplicationController
@@ -48,18 +48,22 @@ class TreesController < ApplicationController
     @tree = Tree.find(id)  # look up tree by unique ID
     # renders app/views/trees/show.html.haml by default
   end
+  
   def new
     # default: render 'new' template
   end
+  
   def create
     params.require(:tree).permit!
     @tree = Tree.create!(params[:tree])
     flash[:notice] = "Tree #{@tree.tag} in plot #{@tree.plot} was successfully created."
     redirect_to trees_path
   end
+  
   def edit
     @tree = Tree.find params[:id]
   end
+  
   def update
     params.require(:tree).permit!
     @tree = Tree.find(params[:id])
@@ -70,6 +74,7 @@ class TreesController < ApplicationController
       client_wants.xml { render :xml => @tree.to_xml }
     end
   end
+  
   def destroy
     @tree = Tree.find(params[:id])
     @tree.destroy
