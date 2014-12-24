@@ -11,7 +11,6 @@ gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '3.2.0.2'
-gem 'font-awesome-rails'
 gem 'autoprefixer-rails'
 
 # Use Uglifier as compressor for JavaScript assets
