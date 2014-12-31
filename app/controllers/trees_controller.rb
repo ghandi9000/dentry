@@ -3,12 +3,12 @@
 # Description: 
 # Author: Noah Peart
 # Created: Sun Dec  7 17:02:23 2014 (-0400)
-# Last-Updated: Tue Dec 23 14:22:52 2014 (-0400)
+# Last-Updated: Wed Dec 31 16:18:37 2014 (-0500)
 #           By: Noah Peart
 # 
 class TreesController < ApplicationController
-  http_basic_authenticate_with email: "dhh", password: "secret",
-  except: [:index, :show]
+  # http_basic_authenticate_with email: "dhh", password: "secret",
+  # except: [:index, :show]
   
   def index
     if (params[:sort_by].blank? &&
