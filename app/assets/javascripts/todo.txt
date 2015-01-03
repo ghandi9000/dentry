@@ -1,0 +1,1 @@
+Add pins to gmap for plot locations
