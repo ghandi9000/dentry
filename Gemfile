@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rack', ">= 1.6.11"
-gem 'rails', '4.2.0.rc2'
+gem 'rails', '>= 4.2.0.rc2'
 gem 'bcrypt', '3.1.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -24,7 +24,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+# gem 'jquery-rails'
+gem "jquery-rails", ">= 4.0.4"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -49,7 +50,8 @@ group :development, :test do
   # gem 'debugger'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  # gem 'web-console', '~> 2.0'
+  gem "web-console", ">= 2.1.3"
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
@@ -62,3 +64,9 @@ group :development, :test do
 end
 
 gem 'haml'
+gem 'sprockets', ">= 2.12.5"
+gem 'nokogiri', ">= 1.8.2"
+gem 'loofah', ">= 2.2.3"
+gem "actionview", ">= 4.2.7.1"
+gem "actionpack", ">= 4.2.5.1"
+gem "rails-html-sanitizer", ">= 1.0.4"
