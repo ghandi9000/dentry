@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rack', ">= 1.6.11"
 gem 'rails', '>= 4.2.0.rc2'
 gem 'bcrypt', '3.1.7'
+gem 'activejob', '>= 4.2.11'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '4.2.0.rc1'
